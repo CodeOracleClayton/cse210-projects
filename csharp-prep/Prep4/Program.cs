@@ -42,6 +42,6 @@ class Program
                 }
             }
 
-        Console.WriteLine("The max is: {0}", max);
+        Console.WriteLine("The max number is: {0}", max);
     }
 }

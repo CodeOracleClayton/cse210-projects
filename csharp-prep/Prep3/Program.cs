@@ -11,7 +11,7 @@ class Program
 
         while ( guess != magicNumber)
         {
-            Console.Write("What is your number?");
+            Console.Write("What is your number? ");
             string answer = Console.ReadLine();
             guess = int.Parse(answer);
 

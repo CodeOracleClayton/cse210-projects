@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("What is your percentage? ");
+        Console.Write("What is your percentage?");
         string percentageMark = Console.ReadLine();
         int actualMark = int.Parse(percentageMark);
 
