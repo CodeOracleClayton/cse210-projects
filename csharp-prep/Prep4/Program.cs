@@ -29,8 +29,8 @@ class Program
 
             Console.WriteLine(sum);
 
-            float average = (sum) / numbers.Count();
-            Console.WriteLine(average);
+            float average = ((float)sum) / numbers.Count;
+            Console.WriteLine("The average is: {0}", average);
 
             int max = numbers[0];
 
@@ -42,6 +42,6 @@ class Program
                 }
             }
 
-        Console.WriteLine($"The max is: {max}");
+        Console.WriteLine("The max is: {0}", max);
     }
 }

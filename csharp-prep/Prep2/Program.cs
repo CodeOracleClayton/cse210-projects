@@ -32,7 +32,7 @@ class Program
 
         else
         {
-            letter = "E";
+            letter = "F";
         }
 
         Console.WriteLine("Your grade is {0}", letter);

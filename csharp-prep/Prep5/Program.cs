@@ -18,7 +18,7 @@ class Program
 
     static string PromptUserName()
     {
-        Console.Write("What is your name?");
+        Console.Write("Please enter your name: ");
         string Username = Console.ReadLine();
 
         return Username;
@@ -26,7 +26,7 @@ class Program
 
     static int PromptUserNumber()
     {
-        Console.Write("What is your favourite number? ");
+        Console.Write("Please enter your favorite number: ");
         string response = Console.ReadLine();
         int userNumber = int.Parse(response);
 
@@ -41,6 +41,6 @@ class Program
 
     static void DisplayResult(string name, int square)
     {
-        Console.WriteLine($"{name}, the square of your number is {square}");
+        Console.WriteLine("{0}, the square of your number is {1}", name, square);
     }
 }
