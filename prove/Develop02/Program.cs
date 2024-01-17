@@ -29,7 +29,7 @@ class Program
                 string mySuggestion = promptList.getPrompt();
                 Console.WriteLine(mySuggestion);
                 string todayEntry = Console.ReadLine();
-                entry._date = dateText;
+                entry._date = DateTime.Today.ToString();
                 entry._promptText = mySuggestion;
                 entry._entryText = todayEntry;
                 journal.loadJournal(entry);
@@ -46,12 +46,16 @@ class Program
 
             else if (answer == 3)
             {
-                Console.WriteLine("Load");
+                Console.Write("What is the filename?");
+                string filename = Console.ReadLine();
+                journal.LoadFromFile(filename);
             }
 
             else if (answer == 4)
             {
-                Console.WriteLine("Save");
+                Console.Write("What is the filename?");
+                string filename = Console.ReadLine();
+                journal.saveFile(filename);
             }
 
             else
