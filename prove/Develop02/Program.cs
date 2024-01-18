@@ -1,12 +1,12 @@
 using System;
 using Develop02;
 
+
 class Program
 {
     static void Main(string[] args)
     {
         Journal journal = new Journal();
-        Entry entry = new Entry();
         PromptGenerator promptList = new PromptGenerator();
 
         DateTime dateTime = new DateTime();
@@ -26,6 +26,7 @@ class Program
 
             if (answer == 1)
             {
+                Entry entry = new Entry();
                 string mySuggestion = promptList.getPrompt();
                 Console.WriteLine(mySuggestion);
                 string todayEntry = Console.ReadLine();
@@ -40,7 +41,7 @@ class Program
             {
                 foreach (Entry journalEntry in journal._answers)
                 {
-                    journalEntry.display();
+                    journalEntry.Display();
                 }
             }
 

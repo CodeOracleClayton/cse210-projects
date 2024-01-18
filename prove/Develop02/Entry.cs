@@ -11,7 +11,7 @@ namespace Develop02
         public string _promptText;
         public string _entryText;
 
-        public void display()
+        public void Display()
         {
             Console.WriteLine("Date: {0} - Prompt: {1}", _date, _promptText);
             Console.WriteLine(_entryText);
