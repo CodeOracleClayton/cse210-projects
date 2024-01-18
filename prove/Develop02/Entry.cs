@@ -1,20 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Develop02
+namespace JournalApp
 {
     public class Entry
     {
         public string _date;
-        public string _promptText;
+        public string _prompText;
         public string _entryText;
 
         public void Display()
         {
-            Console.WriteLine("Date: {0} - Prompt: {1}", _date, _promptText);
-            Console.WriteLine(_entryText);
+            Console.WriteLine("{0}, - {1}", _date, _prompText);
+            Console.WriteLine("{0}", _entryText);
+            Console.WriteLine("");
         }
     }
 }

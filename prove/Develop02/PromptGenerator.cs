@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Develop02
+namespace JournalApp
 {
     public class PromptGenerator
     {
-        public List<string> _prompts = new List<string>{
+        List<string> _prompts = new List<string>
+        {
             "How was your day?",
             "Did you meet anyone today?",
             "In what way was this day different from other days?",
@@ -16,11 +18,11 @@ namespace Develop02
             "What did I accomplish today?"
         };
 
-        public string getPrompt()
+        public string GetRandomPrompt()
         {
             Random random = new Random();
-            int randomNumber = random.Next(0,_prompts.Count()-1);
-            return _prompts[randomNumber];
+            int number = random.Next(0, _prompts.Count - 1);
+            return _prompts[number];
         }
     }
 }

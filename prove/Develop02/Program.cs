@@ -1,68 +1,70 @@
 using System;
-using Develop02;
+using System.Diagnostics;
+using System.Drawing;
+using System.Runtime.Intrinsics.X86;
 
-
-class Program
+namespace JournalApp
 {
-    static void Main(string[] args)
+    public class Program
     {
-        Journal journal = new Journal();
-        PromptGenerator promptList = new PromptGenerator();
-
-        DateTime dateTime = new DateTime();
-        string dateText =  dateTime.ToShortDateString();
-
-        Console.WriteLine("Welcome to the Journal Program!");
-
-        int answer = -1;
-
-        while (answer != 5)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Please select one of the following choices");
-            Console.WriteLine("1. Write \n2. Display \n3. Load \n4. Save \n5. Quit");
-            Console.Write("What would you like to do?");
-            string userAnswer = Console.ReadLine();
-            answer = int.Parse(userAnswer);
+            PromptGenerator promptGenerator = new PromptGenerator();
+            Journal journal = new Journal();
 
-            if (answer == 1)
-            {
-                Entry entry = new Entry();
-                string mySuggestion = promptList.getPrompt();
-                Console.WriteLine(mySuggestion);
-                string todayEntry = Console.ReadLine();
-                entry._date = DateTime.Today.ToString();
-                entry._promptText = mySuggestion;
-                entry._entryText = todayEntry;
-                journal.loadJournal(entry);
-                
-            }
+            DateTime dateTime = DateTime.Now;  
+            string dateTimeNow = dateTime.ToShortDateString();
 
-            else if (answer == 2)
+            Console.WriteLine("Welcome to the Journal Program!");
+
+            int answer = -1;
+
+            while (answer != 5 )
             {
-                foreach (Entry journalEntry in journal._answers)
+                Console.WriteLine("1. Write \n2. Display \n3. Load \n4. Save \n5. Quit");
+                Console.Write("What would you like to do? ");
+                string myAnswer = Console.ReadLine();
+                answer = int.Parse(myAnswer);
+
+                switch (answer)
                 {
-                    journalEntry.Display();
+                    case 1:
+                        Entry entry = new Entry();
+                        string myPromptText = promptGenerator.GetRandomPrompt();
+                        Console.WriteLine(myPromptText);
+                        Console.Write(">");
+                        string myText = Console.ReadLine();
+                        entry._prompText = myPromptText;
+                        entry._date = dateTimeNow;
+                        entry._entryText = myText;
+                        journal.AddEntry(entry);
+                        break;
+
+                    case 2:
+                        foreach (Entry journalEntries in journal._entries)
+                        {
+                            journalEntries.Display();
+                        }
+                        break;
+
+                    case 3:
+                        Console.Write("What is the file name?");
+                        string _filename = Console.ReadLine();
+                        journal.LoadFromFile(_filename);
+                        break;
+
+                    case 4:
+                        Console.Write("What is file name?");
+                        string filename = Console.ReadLine();
+                        journal.SaveToFile(filename);
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Quit");
+                        break;
                 }
             }
-
-            else if (answer == 3)
-            {
-                Console.Write("What is the filename?");
-                string filename = Console.ReadLine();
-                journal.LoadFromFile(filename);
-            }
-
-            else if (answer == 4)
-            {
-                Console.Write("What is the filename?");
-                string filename = Console.ReadLine();
-                journal.saveFile(filename);
-            }
-
-            else
-            {
-                Console.WriteLine("Quit");
-            }
         }
+
     }
 }

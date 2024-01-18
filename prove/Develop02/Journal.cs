@@ -1,58 +1,60 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Develop02
+namespace JournalApp
 {
     public class Journal
     {
-        public List<Entry> _answers = new List<Entry>();
+        public List<Entry> _entries = new List<Entry>();
 
-        public void loadJournal(Entry ourEntry)
+        public void AddEntry(Entry newEntry)
         {
-            _answers.Add(ourEntry);
+            _entries.Add(newEntry);
         }
 
-        public void DisplayAll(List<Entry> entries)
+        public void DisplayAll()
         {
-            foreach (Entry entry in entries)
+            foreach (Entry entry in _entries)
             {
                 Console.WriteLine(entry);
             }
         }
 
-        public void saveFile(string file)
+        public void SaveToFile(string _filename)
         {
-            string fileName = file;
-            using (StreamWriter outputFile = new StreamWriter(fileName))
-            {
-                foreach (Entry entry in _answers)
-                {
-                    outputFile.WriteLine("{0}, {1}, {2}", entry._date, entry._promptText, entry._entryText);
-                }
+            string filename = _filename;
 
+            using (StreamWriter sw = new StreamWriter(filename))
+            {
+                foreach(Entry entry in _entries)
+                {
+                    sw.WriteLine("{0}, {1}, {2}", entry._date, entry._prompText, entry._entryText);
+                }
             }
+
         }
 
-        public void LoadFromFile(string file)
-
+        public void LoadFromFile(string filename)
         {
-            _answers = new List<Entry>();
-            string filename = file;
-            string[] lines = System.IO.File.ReadAllLines(filename);
-            
-            foreach  (string line in lines)
+            _entries = new List<Entry>();
+            string _filename = filename;
+            string[] lines = System.IO.File.ReadAllLines(_filename);
+            foreach (string line in lines)
             {
                 Entry entryFile = new Entry();
-                string[] parts  = line.Split(",");
+                string[] parts = line.Split(",");
                 entryFile._date = parts[0];
-                entryFile._promptText = parts[1];
+                entryFile._prompText = parts[1];
                 entryFile._entryText = parts[2];
-                
-                _answers.Add(entryFile);
+
+                _entries.Add(entryFile);
             }
+
         }
+
     }
 }
