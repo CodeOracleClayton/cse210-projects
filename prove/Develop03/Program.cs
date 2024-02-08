@@ -4,25 +4,34 @@ class Program
 {
     static void Main(string[] args)
     {
+        Reference reference = new Reference("Proverbs", 3, 5, 6);
+        Scripture scripture = new Scripture(reference, "Trust in the Lord with all thine heart; and lean not unto thine own understanding; in all thy ways acknowledge him, and he shall direct thy paths.");
+        string userInput = "";
 
-        Console.WriteLine("Welcome to the scripture memorizer!");
+        Console.WriteLine("-----------Welcome to the Scripture Memorizer App----------------");
+        Console.WriteLine(" ");
+        Console.WriteLine("Choose level: \n1. Level 1 \n2. Level 2\n3. Level 3");
+        string answer = Console.ReadLine();
+        int HideNumber = int.Parse(answer);
 
-        Scripture myScripture = new Scripture("Proverbs", "3", "5-6", "Trust in the LORD with all your heart and lean not on your own understanding;  in all your ways acknowledge him, and he will make your paths straight.");
-        bool finish = false;
-        string answer;
-        while (finish == false)
+        while (userInput.ToLower() != "quit")
         {
-            Console.WriteLine("Press the Enter key to continue or type quit to finish");
-            answer = Console.ReadLine();
-            myScripture.DisplayRenderedText();
-            myScripture.HideWords();
-            myScripture.IsCompletelyHidden();
-            if (answer == "quit")
+            Console.Clear();
+            Console.WriteLine(scripture.GetDisplayText());
+            Console.WriteLine(" ");
+
+            Console.WriteLine("Press Enter to continue or type 'quit' to finish ");
+            userInput = Console.ReadLine();
+
+            if (scripture.IsCompletelyHidden())
+                break;
+
+            for (int i = 0; i < 3; i++)
             {
-                finish = true;
+                scripture.HideRandomWords(HideNumber);
+                if (scripture.IsCompletelyHidden())
+                    break;
             }
-
-
         }
     }
 }
