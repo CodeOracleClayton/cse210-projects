@@ -20,7 +20,7 @@ class Program
             Console.WriteLine(scripture.GetDisplayText());
             Console.WriteLine(" ");
 
-            Console.WriteLine("Press Enter to continue or type 'quit' to finish ");
+            Console.WriteLine("Press Enter to continue or type 'quit' to finish");
             userInput = Console.ReadLine();
 
             if (scripture.IsCompletelyHidden())
