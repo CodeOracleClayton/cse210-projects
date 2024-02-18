@@ -1,0 +1,6 @@
+1300
+5
+SimpleGoal**run|run a mile|200|True
+EternalGoal**Read the scriptures|read the scriptures every day|50
+ChecklistGoal**Go to temple|go to the temple 2 times|100|300|2|2|True
+SimpleGoal**Give a talk|give a talk on sunday|300|True
